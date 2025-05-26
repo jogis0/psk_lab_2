@@ -18,7 +18,7 @@ public class FixedCalculationService implements CalculationService {
         try {
             // Different logic here
             Thread.sleep(3000);
-            calculationResults.put(id, "Yes");
+            calculationResults.put(id, "Maybe");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
