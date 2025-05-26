@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Aspect
-@ConditionalOnProperty(prefix = "business.logging", name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "features.logging", name = "enabled", havingValue = "true", matchIfMissing = true)
 @Component
 public class LoggingAspect {
 

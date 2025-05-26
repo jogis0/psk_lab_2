@@ -8,7 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(exclude = "team")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 public class Player {
@@ -25,10 +24,6 @@ public class Player {
 
     @Column(nullable = false)
     private Integer age;
-
-    @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
 
     @Column(nullable = false)
     private Integer height;
