@@ -8,6 +8,10 @@ import lt.vu.psk.repository.PlayerRepository;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 @Service
 @RequiredArgsConstructor
 public class PlayerService {
@@ -34,15 +38,10 @@ public class PlayerService {
         return player.get();
     }
 
-//    public void updatePlayer(Player player) {
-//        try {
-//            playerRepository.save(player);
-//        } catch (ObjectOptimisticLockingFailureException e) {
-//            System.out.println("Conflict detected. Retry needed.");
-//            throw e;
-//        }
-//    }
-    //TODO: Geresni handlinga padaryti
+    public List<Player> getAllPlayers() {
+        return playerRepository.findAll();
+    }
+
     public void updatePlayer(Player player) {
         int attempt = 0;
 

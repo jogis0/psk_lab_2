@@ -3,18 +3,27 @@ package lt.vu.psk.controller;
 import lombok.RequiredArgsConstructor;
 import lt.vu.psk.dto.PlayerDTO;
 import lt.vu.psk.entity.Player;
+import lt.vu.psk.service.CalculationService;
 import lt.vu.psk.service.PlayerService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
     private final PlayerService playerService;
+    private final CalculationService calculationService;
 
     @PostMapping
     public void createPlayer(@RequestBody PlayerDTO playerDTO) {
         playerService.createPlayer(playerDTO);
+    }
+
+    @GetMapping
+    public List<Player> getPlayers() {
+        return playerService.getAllPlayers();
     }
 
     @GetMapping("/{userId}")
@@ -22,8 +31,19 @@ public class PlayerController {
         return playerService.getPlayer(userId);
     }
 
-    @PutMapping//("/{userId}/{version}/{jerseyNumber}")
-    public void updatePlayer(@RequestBody Player player /*@PathVariable Long userId, @PathVariable Integer jerseyNumber, @PathVariable Integer version*/) {
+    @PutMapping
+    public void updatePlayer(@RequestBody Player player) {
         playerService.updatePlayer(player);
+    }
+
+    @PostMapping("/calculate/{userId}")
+    public String calculateProbability(@PathVariable Long userId) {
+        calculationService.calculateWhetherUserWillMakeTheNBA(userId);
+        return "Started calculations for user ID " + userId;
+    }
+
+    @GetMapping("/result/{userId}")
+    public String getTaskResult(@PathVariable Long userId) {
+        return calculationService.getCalculationResult(userId);
     }
 }
