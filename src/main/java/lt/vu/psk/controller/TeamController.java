@@ -1,4 +1,0 @@
-package lt.vu.psk.controller;
-
-public class TeamController {
-}

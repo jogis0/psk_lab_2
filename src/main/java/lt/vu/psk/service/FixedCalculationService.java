@@ -16,6 +16,7 @@ public class FixedCalculationService implements CalculationService {
     @Override
     public void calculateWhetherUserWillMakeTheNBA(Long id) {
         try {
+            // Different logic here
             Thread.sleep(3000);
             calculationResults.put(id, "Yes");
         } catch (InterruptedException e) {
