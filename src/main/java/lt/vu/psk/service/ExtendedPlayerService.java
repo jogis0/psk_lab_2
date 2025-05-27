@@ -39,8 +39,8 @@ public class ExtendedPlayerService implements PlayerService {
     }
 
     @Override
-    public void updatePlayer(Player player) {
+    public boolean updatePlayer(Player player) {
         System.out.println("Updating player...");
-        delegate.updatePlayer(player);
+        return delegate.updatePlayer(player);
     }
 }

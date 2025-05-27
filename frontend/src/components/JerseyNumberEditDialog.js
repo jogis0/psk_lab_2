@@ -9,7 +9,7 @@ const JerseyNumberEditDialog = ({ player, onClose, onSave, onConflict }) => {
     try {
       await onSave({ ...player, jerseyNumber: parseInt(jerseyNumber) });
     } catch (error) {
-      if (error.status === 500) {
+      if (error.status === 406) {
         const currentPlayer = await onConflict(player.id);
         setConflictData({
           original: player.jerseyNumber,

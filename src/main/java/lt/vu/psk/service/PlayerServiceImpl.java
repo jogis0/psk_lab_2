@@ -44,20 +44,12 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void updatePlayer(Player player) {
-        int attempt = 0;
-
-        while (attempt < MAX_RETRIES) {
-            try {
-                doUpdate(player);
-                return;
-            } catch (ObjectOptimisticLockingFailureException e) {
-                attempt++;
-                System.out.println("Optimistic lock conflict. Retrying... (attempt " + attempt + ")");
-                if (attempt >= MAX_RETRIES) {
-                    throw new RuntimeException("Failed to update player after " + MAX_RETRIES + " attempts due to concurrent updates.", e);
-                }
-            }
+    public boolean updatePlayer(Player player) {
+        try {
+            doUpdate(player);
+            return true;
+        } catch (ObjectOptimisticLockingFailureException e) {
+            return false;
         }
     }
 

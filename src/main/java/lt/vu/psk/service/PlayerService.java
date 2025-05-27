@@ -9,5 +9,5 @@ public interface PlayerService {
     void createPlayer(PlayerDTO playerDTO);
     Player getPlayer(Long id);
     List<Player> getAllPlayers();
-    void updatePlayer(Player player);
+    boolean updatePlayer(Player player);
 }
