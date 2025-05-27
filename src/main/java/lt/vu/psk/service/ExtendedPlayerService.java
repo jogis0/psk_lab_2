@@ -2,6 +2,7 @@ package lt.vu.psk.service;
 
 import lt.vu.psk.dto.PlayerDTO;
 import lt.vu.psk.entity.Player;
+import lt.vu.psk.interceptor.LoggedAction;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Primary;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@LoggedAction
 @Primary
 @ConditionalOnProperty(name = "features.decorator.enabled", havingValue = "true")
 public class ExtendedPlayerService implements PlayerService {

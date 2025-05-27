@@ -1,5 +1,6 @@
 package lt.vu.psk.service;
 
+import lt.vu.psk.interceptor.LoggedAction;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
+@LoggedAction
 @ConditionalOnProperty(name = "features.player.calculation", havingValue = "random")
 public class RandomCalculationService implements CalculationService {
     private final Map<Long, String> calculationResults = new ConcurrentHashMap<>();

@@ -36,7 +36,7 @@ public class PlayerController {
 
     @PutMapping
     public ResponseEntity<?> updatePlayer(@RequestBody Player player) {
-        return (playerService.updatePlayer(player)) ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+        return (playerService.updatePlayer(player)) ? ResponseEntity.status(HttpStatus.OK).build() : ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
 
     @PostMapping("/calculate/{userId}")

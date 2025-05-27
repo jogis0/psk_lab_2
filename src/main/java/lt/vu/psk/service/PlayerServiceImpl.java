@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lt.vu.psk.dto.PlayerDTO;
 import lt.vu.psk.entity.Player;
+import lt.vu.psk.interceptor.LoggedAction;
 import lt.vu.psk.repository.PlayerRepository;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("basePlayerService")
+@LoggedAction
 @RequiredArgsConstructor
 public class PlayerServiceImpl implements PlayerService {
     private static final int MAX_RETRIES = 3;
